@@ -1,0 +1,15 @@
+def sortfunc(data):
+  left_num=0  #左から調べるときの開始地点
+  right_num=len(data)-1  #右から調べるときの開始地点
+
+  while left_num<right_num:
+    if data[left_num]>=data[0]:  #頭の数より大きいとき
+      while data[right_num]>=data[0] and right_num>left_num:  #右から探して頭の数未満のところを探す
+        right_num = right_num-1
+      if right_num==left_num: #右から探してぶつかるまで見つからなかったら探索終了
+        return data[:left_num],data[left_num:len(data)]
+
+      data[left_num], data[right_num] = data[right_num], data[left_num] #頭の数未満があった時は入れ替える
+    left_num=left_num + 1
+    if left_num == right_num: #左から探してぶつかるまで見つからない時は探索終了
+      return data[:left_num],data[left_num:len(data)]
