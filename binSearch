@@ -1,1 +1,12 @@
-
+def bin_search(target, data):
+  head=0  #探索を開始する位置
+  tail=len(data)-1  #探索が終わる位置
+  while head<=tail:
+    mean=(head+tail)//2  #対象の配列の真ん中のインデックス（偶数個の場合は小さい方）
+    if data[mean]==target:
+      return mean
+    elif data[mean]<target:
+      head = mean+1 #ターゲットが真ん中の値より小さい時探索の範囲を真ん中の次からに更新する
+    else:
+      tail = mean-1 #ターゲットが真ん中の値より大きい時探索の範囲を真ん中の前までに更新する
+  return -1 #値が存在しない時は-1を返す
